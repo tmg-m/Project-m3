@@ -4,7 +4,7 @@
 
 ## Description
 
-​ An App dedicated to opening issues encountered in work of any kind with an open mindset of confronting it globally and solve it, may the issues/problems be form as lower as school level to professional level doesnt matter.
+​ An App dedicated to opening task/issues encountered in work of any kind with an open mindset of confronting it globally and solve it, may the issues/problems be form as lower as school level to professional level doesnt matter.
 
 This repository is the REST API for the [frontend repository Work-Floo](https://github.com/tmg-m/Work-floo).
 
@@ -35,8 +35,23 @@ npm run start
 | Name | Method | Endpoint | Auth | Req.body | Redirects |
 |-------|--------|-------------|------|---------------------|-----------|
 | Home | GET | / | Yes | | |
+| Login | GET | /auth/login | No |  |  |
 | Login | POST | /auth/login | No | { email, password } | / |
-| Signup | POST | /auth/signup | No | { email, password, name, username, password, confirm-Password,  } | / |
+| Signup | GET | /auth/signup | No |  |  |
+| Signup | POST | /auth/signup | No | { email, password, name, username, hashedPassword  } | / |
+| Task | GET | /task/{task_id} | Yes | { id } |  |
+| Task user | GET | /{user_id}/task/ | Yes |  |  |
+| Task | POST | /{user_id}/task/ | Yes | { title, discription, img, urgent } | /task/{task_id} |
+| Task edit | GET | /task/{task_id}/edit | Yes | { title, discription, img, urgent } |  |
+| Task edit | POST | /{user_id}/task/{task_id}/edit | Yes | { title, discription, img, urgent } | /task/{task_id} |
+| Task delete | POST | /user/{user_id}/task/{task_id}/delete | Yes | { title, discription, img, urgent } | /user/{user_id}/task/ |
+| Profile | GET | /user/{user_id}/profile | Yes |  |  |
+| Profile edit | GET | /user/{user_id}/edit | Yes | { title, discription, img, urgent } | /user/{user_id} |
+| Profile edit | POST | /{user_id}/edit | Yes | { title, discription, img, urgent } | /user/{user_id}/ |
+| Profile delete | POST | /user/{user_id}/delete | Yes | { user_id } | /login |
+| Error | GET | /error | No |  |  |
+​
+​
 ​
 ​
 ​
