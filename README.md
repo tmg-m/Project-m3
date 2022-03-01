@@ -36,6 +36,8 @@ npm run start
 |-------|--------|-------------|------|---------------------|-----------|
 | Home | GET | / | Yes | | |
 | Login | POST | /auth/login | No | { email, password } | / |
+| Signup | POST | /auth/signup | No | { email, password, name, username, password, confirm-Password,  } | / |
+​
 ​
 ​
 
