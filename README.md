@@ -1,11 +1,12 @@
 # My project's name
 
-​
+​Work Floo
 
 ## Description
 
-​
-This repository is the REST API for the [frontend repository XXX](link). It allows users to...
+​ An App dedicated to opening issues encountered in work of any kind with an open mindset of confronting it globally and solve it, may the issues/problems be form as lower as school level to professional level doesnt matter.
+
+This repository is the REST API for the [frontend repository Work-Floo](https://github.com/tmg-m/Work-floo).
 
 ### setup .env
 
@@ -41,5 +42,6 @@ npm run start
 ## Links
 
 - [Slides]()
-- [Frontend repository]()
-- [Deployed version]()
+- [Frontend repository](https://github.com/tmg-m/Work-floo)
+- [Deployed version](https://workfloo.herokuapp.com/)
+- [Created by](https://github.com/tmg-m)
