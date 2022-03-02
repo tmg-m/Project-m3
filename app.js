@@ -17,7 +17,7 @@ require("./config")(app);
 app.use("/api", allRoutes);
 app.use("/api/protected", isAuthenticated, protectedRoute);
 app.use("/auth", authRouter);
-app.use("/task", taskRoute);
+app.use("/task", isAuthenticated, taskRoute);
 
 require("./error-handling")(app);
 
