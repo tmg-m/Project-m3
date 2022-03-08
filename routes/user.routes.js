@@ -35,7 +35,6 @@ router.get("/:id/edit", async (req, res, next) => {
       const user = await UserModel.findById(id)
       res.json({ user });
     }
-    
   } catch (error) {
     res.status(400).json({ message: "Not you'r account!" });
   }

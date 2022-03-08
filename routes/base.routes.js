@@ -4,7 +4,7 @@ const TaskModel = require('../models/Task.model');
 const router = require('express').Router();
 
 router.get('/', async (req, res, next) => {
-    const {name} = req.payload;
+    const { name } = req.payload;
     try {
       const allTask = await TaskModel.find()
       res.json({ name, allTask });
