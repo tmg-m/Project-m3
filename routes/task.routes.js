@@ -24,6 +24,18 @@ router.post("/create", async (req, res, next) => {
   }
 });
 
+router.get("/mine", async (req, res, next) => {
+  // const { title, discription, hot, imgUrl } = req.body;
+  const userId = req.payload._id;
+  // console.log(userId)
+  try {
+    const tasks = await TaskModel.find({ creator: userId }).populate('creator');
+    res.json({ tasks });
+  } catch (error) {
+    console.log(error)
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   console.log(id)
