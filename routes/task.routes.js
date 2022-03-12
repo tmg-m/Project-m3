@@ -70,8 +70,9 @@ router.put("/:id/edit", async (req, res, next) => {
 });
 
 router.delete("/:id/delete", async (req, res, next) => {
+  const userId = req.payload._id;
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const task = await TaskModel.findByIdAndDelete(id);
     res.json({ task });
   } catch (error) {
