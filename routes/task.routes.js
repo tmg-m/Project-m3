@@ -35,10 +35,11 @@ router.get("/mine", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
+  const userId = req.payload._id;
   console.log(id)
   try {
     const task = await TaskModel.findById(id)
-    res.json(task);
+    res.json({ userId, task });
 
   } catch (error) {
     console.log(error)
@@ -50,7 +51,7 @@ router.get("/:id/edit", async (req, res, next) => {
   const userId = req.payload._id;
   try {
     const task = await TaskModel.findById(id)
-    if(usetId === task.creator){
+    if(userId === task.creator){
       res.json(task);
     }
   } catch (error) {
