@@ -19,7 +19,6 @@ router.get("/:id", async (req, res, next) => {
     const user = await UserModel.findById(id)
     const allTask = await TaskModel.find()
     const userTask = allTask.filter((task) => { if (task.creator == id) { return task } })
-    console.log(userTask)
     res.json({ user, userTask });
 
   } catch (error) {
