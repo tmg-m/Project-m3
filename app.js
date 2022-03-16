@@ -10,6 +10,8 @@ const authRouter = require("./routes/auth.routes");
 const taskRoute = require("./routes/task.routes")
 const userRoute = require("./routes/user.routes")
 const baseRoute = require("./routes/base.routes")
+const messageRoute = require("./routes/message.routes")
+const messageRoute = require("./routes/message.routes")
 
 const app = express();
 
@@ -22,6 +24,9 @@ app.use("/", baseRoute);
 app.use("/auth",  authRouter);
 app.use("/task", isAuthenticated, taskRoute);
 app.use("/user", isAuthenticated , userRoute);
+app.use("/chatRoom", isAuthenticated, chatRoomRoute);
+app.use("/message", isAuthenticated, messageRoute);
+
 
 
 require("./error-handling")(app);
