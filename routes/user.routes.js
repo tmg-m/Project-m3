@@ -6,7 +6,7 @@ const router = require("express").Router();
 router.get("/", async (req, res, next) => {
   try {
     const allUser = await UserModel.find()
-    res.json({ allUser })
+    res.json( allUser )
   } catch (error) {
     console.log(error)
   }
