@@ -1,4 +1,5 @@
 const TaskModel = require("../models/Task.model");
+const ChatRoomModel = require("../models/ChatRoom.model");
 const router = require("express").Router();
 
 router.get("/", async (req, res, next) => {
@@ -14,8 +15,9 @@ router.post("/create", async (req, res, next) => {
   const { title, discription, hot, imgUrl } = req.body;
   const userId = req.payload._id;
   try {
-    const createdTask = await TaskModel.create({ title, discription, hot, imgUrl, creator: userId })
-    res.json({ task: createdTask });
+    const createdTask = await TaskModel.create({ title, discription, hot, imgUrl, creator: userId });
+    const createdChatRoom = await ChatRoomModel.create({ title: createdTask.title, users: userId, relatedTask: createdTask._id });
+    res.json({ createdTask, createdChatRoom });
 
   } catch (error) {
     console.log(error)
@@ -23,7 +25,6 @@ router.post("/create", async (req, res, next) => {
 });
 
 router.get("/mine", async (req, res, next) => {
-  // const { title, discription, hot, imgUrl } = req.body;
   const userId = req.payload._id;
   try {
     const tasks = await TaskModel.find({ creator: userId }).populate('creator');
@@ -80,7 +81,7 @@ router.post("/:id/join", async (req, res, next) => {
   const { id } = req.params;
   const userId = req.payload._id;
   try {
-    const task = await TaskModel.findByIdAndUpdate(id, { $push: { assist: userId } }, { new: true })
+    const task = await TaskModel.findByIdAndUpdate(id, { $push: { assist: userId } }, { new: true });
     res.json(task);
   } catch (error) {
     console.log(error)
