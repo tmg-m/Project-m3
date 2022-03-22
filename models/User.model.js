@@ -7,7 +7,7 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   imgUrl: {
     type: String,
-    default: 'Profile-Img',
+    default: '',
   },
   about: { type: String, },
 });

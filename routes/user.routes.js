@@ -17,8 +17,11 @@ router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const user = await UserModel.findById(id)
-    const allTask = await TaskModel.find()
-    const userTask = allTask.filter((task) => { if (task.creator == id) { return task } })
+    const userTask = await TaskModel.find({ creator: id }).populate('creator');
+    console.log(userTask)
+    // const allTask = await TaskModel.find()
+    // const userTask = allTask.filter((task) => { if (task.creator == id) { return task } })
+    
     res.json({ user, userTask });
 
   } catch (error) {
